@@ -1,0 +1,43 @@
+class Solution {
+public:
+    int calculate(string s) {
+    stack<int> st;
+        s+='+';
+        char sign='+';
+         int res=0;
+          long long cur=0;
+        for(auto c:s)
+        {
+            if(isdigit(c))
+                cur=cur*10+c-'0';
+            else if(c==32){}
+            else
+            {
+                if(sign=='+')
+                    st.push(cur);
+                else if(sign=='-')
+                    st.push(cur*(-1));
+                else if(sign=='*')
+                {
+                    int n=st.top();
+                    st.pop();
+                    st.push(n*cur);
+                }
+                else
+                {
+                    int n=st.top();
+                    st.pop();
+                    st.push(n/cur);
+                }
+                sign=c;
+                cur=0;
+            }
+        }
+        while(!st.empty())
+        {
+            res+=st.top();
+            st.pop();
+        }
+        return res;
+    }
+};
