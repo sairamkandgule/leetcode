@@ -1,0 +1,11 @@
+class Solution {
+public:
+    vector<int> targetIndices(vector<int>& v, int t) {
+     int s=count_if(v.begin(),v.end(),[&](int n){return n < t;});
+        int eaual=count(v.begin(),v.end(),t);
+        vector<int> vv(eaual);
+        iota(vv.begin(),vv.end(),s);
+        return vv;
+        
+    }
+};
