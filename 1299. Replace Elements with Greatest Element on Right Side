@@ -17,4 +17,19 @@ public:
 };
 
 
----- ------
+---- another approach------
+class Solution {
+public:
+    vector<int> replaceElements(vector<int>& v) {
+        int mx=-1;
+        int i=v.size()-1;
+        while(i >= 0)
+        {
+            int temp=v[i];
+            v[i]=mx;
+            mx=max(mx,temp);
+            i--;
+        }
+        return v;
+    }
+};
