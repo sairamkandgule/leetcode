@@ -1,0 +1,22 @@
+class Solution {
+public:
+    bool checkInclusion(string s1, string s2) {
+       if(s1.size() > s2.size()) return false;
+       vector<int> final(26,0),goal(26,0);
+       int n=s1.size();
+       int j=0,i=0;
+       for(j;j<s1.size();j++)
+       {
+           final[s1[j]-'a']++;
+           goal[s2[j]-'a']++;
+       }
+      if(final==goal) return true;
+      for(i=0,j;j<s2.size();j++,i++)
+      {
+          goal[s2[i]-'a']--;
+          goal[s2[j]-'a']++;
+         if(final==goal) return true;
+      }
+    return false;
+    }
+};
