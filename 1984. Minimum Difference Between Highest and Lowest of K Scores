@@ -1,0 +1,16 @@
+use window sliding technique
+
+class Solution {
+public:
+    int minimumDifference(vector<int>& v, int k) {
+        int n=v.size();
+        if(k==1) return 0;
+        sort(v.begin(),v.end());
+        if(n==k) return v[n-1]-v[0];
+        int ans=v[k-1]-v[0];
+        for(int j=k,i=1;j<n;j++,i++)
+        ans=min(ans,v[j]-v[i]);
+        return ans;
+        
+    }
+};
